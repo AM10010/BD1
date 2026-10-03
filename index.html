@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>You're Invited — Amelia's 25th Birthday Celebration</title>
+<meta name="description" content="Join us for Amelia's 25th birthday celebration. Party details, countdown, gallery and RSVP." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ Page loader ============ -->
+<div id="loader" class="loader">
+  <div class="loader-cake">🎂</div>
+  <p class="loader-text">Preparing your invitation…</p>
+</div>
+
+<!-- ============ Decorations ============ -->
+<div class="decor" aria-hidden="true">
+  <span class="balloon b1"></span><span class="balloon b2"></span>
+  <span class="balloon b3"></span><span class="balloon b4"></span>
+  <span class="balloon b5"></span>
+</div>
+<canvas id="confetti" class="confetti-canvas" aria-hidden="true"></canvas>
+
+<!-- ============ Navbar ============ -->
+<nav class="navbar navbar-expand-lg fixed-top site-nav" id="nav">
+  <div class="container">
+    <a class="navbar-brand brand" href="#hero">INVITO<span>.</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navLinks">
+      <ul class="navbar-nav gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#countdown">Countdown</a></li>
+        <li class="nav-item"><a class="nav-link" href="#details">Details</a></li>
+        <li class="nav-item"><a class="nav-link" href="#highlights">Highlights</a></li>
+        <li class="nav-item"><a class="nav-link" href="#dresscode">Dress Code</a></li>
+        <li class="nav-item"><a class="btn btn-party btn-sm ripple ms-lg-2" href="#rsvp">RSVP</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- ============ 1. Hero ============ -->
+<header class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-veil"></div>
+  <div class="container position-relative text-center hero-inner">
+    <p class="eyebrow hero-anim" style="--d:.1s">🎉 Save the date · 12 September 2026</p>
+    <h1 class="hero-title hero-anim" style="--d:.25s">You're Invited!</h1>
+    <p class="hero-name hero-anim" style="--d:.4s">Amelia Rose</p>
+    <p class="hero-sub hero-anim" style="--d:.55s">is turning twenty-five</p>
+    <p class="hero-msg hero-anim mx-auto" style="--d:.7s">
+      An evening of cake, music and laughter — and it simply wouldn't be the same without you.
+      Come celebrate a brand new year of joy with us.
+    </p>
+    <div class="hero-anim" style="--d:.85s">
+      <a href="#gallery" class="btn btn-party btn-lg ripple">Celebrate With Us</a>
+    </div>
+    <div class="hero-cake hero-anim" style="--d:1s" aria-hidden="true">
+      <span class="cake-emoji">🎂</span>
+      <span class="sparkle s1"></span><span class="sparkle s2"></span><span class="sparkle s3"></span>
+    </div>
+  </div>
+  <a href="#gallery" class="scroll-down" aria-label="Scroll down">
+    <span class="mouse"></span><span class="scroll-label">Scroll Down</span>
+  </a>
+</header>
+
+<!-- ============ 2. Gallery ============ -->
+<section id="gallery" class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="eyebrow dark">Memories</p>
+      <h2 class="section-title">Birthday Gallery</h2>
+      <p class="section-sub mx-auto">A little look back at the moments that made these years so sweet.</p>
+    </div>
+    <div class="row g-4 mt-2" id="galleryGrid">
+      <!-- populated by script.js -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. Countdown ============ -->
+<section id="countdown" class="section section-tint">
+  <div class="container text-center">
+    <div class="reveal">
+      <p class="eyebrow dark">Almost time</p>
+      <h2 class="section-title">The Countdown Begins</h2>
+      <p class="section-sub mx-auto">Every second brings us closer to the confetti.</p>
+    </div>
+    <div class="row justify-content-center g-3 g-md-4 mt-2" id="countdownRow">
+      <div class="col-6 col-md-3 reveal" style="--d:.05s">
+        <div class="count-card c1"><span class="count-num" id="cd-days">00</span><span class="count-label">Days</span></div>
+      </div>
+      <div class="col-6 col-md-3 reveal" style="--d:.15s">
+        <div class="count-card c2"><span class="count-num" id="cd-hours">00</span><span class="count-label">Hours</span></div>
+      </div>
+      <div class="col-6 col-md-3 reveal" style="--d:.25s">
+        <div class="count-card c3"><span class="count-num" id="cd-mins">00</span><span class="count-label">Minutes</span></div>
+      </div>
+      <div class="col-6 col-md-3 reveal" style="--d:.35s">
+        <div class="count-card c4"><span class="count-num" id="cd-secs">00</span><span class="count-label">Seconds</span></div>
+      </div>
+    </div>
+    <p class="mt-4 count-note reveal" id="countNote">until the party starts 🎈</p>
+  </div>
+</section>
+
+<!-- ============ 4. Party details ============ -->
+<section id="details" class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="eyebrow dark">The plan</p>
+      <h2 class="section-title">Party Details</h2>
+    </div>
+    <div class="row g-4 mt-2">
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.05s">
+        <div class="glass-card h-100 lift"><span class="ico">🎂</span><h3>Birthday Date</h3><p>Saturday, 12 September 2026</p></div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.12s">
+        <div class="glass-card h-100 lift"><span class="ico">🕒</span><h3>Party Time</h3><p>7:00 PM till late</p></div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.19s">
+        <div class="glass-card h-100 lift"><span class="ico">📍</span><h3>Venue</h3><p>The Rose Garden Hall<br />48 Marina Avenue, Lisbon</p></div>
+      </div>
+      <div class="col-md-6 col-lg-6 reveal" style="--d:.26s">
+        <div class="glass-card h-100 lift"><span class="ico">🎉</span><h3>Theme</h3><p>Golden Garden Soirée</p></div>
+      </div>
+      <div class="col-md-6 col-lg-6 reveal" style="--d:.33s">
+        <div class="glass-card h-100 lift"><span class="ico">👗</span><h3>Dress Code</h3><p>Elegant pastels &amp; a touch of gold</p></div>
+      </div>
+    </div>
+
+    <figure class="venue-wrap reveal mt-5 mb-0">
+      <img src="images/venue.jpg" alt="The Rose Garden Hall decorated with balloon arch and string lights" width="1600" height="900" loading="lazy" />
+      <figcaption>The Rose Garden Hall · Lisbon</figcaption>
+    </figure>
+    <div class="text-center mt-4 reveal">
+      <a class="btn btn-outline-party btn-lg ripple" target="_blank" rel="noopener noreferrer"
+         href="https://www.google.com/maps/search/?api=1&query=Marina+Avenue+Lisbon">
+        <i class="bi bi-geo-alt-fill me-2"></i>Open in Google Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. Highlights ============ -->
+<section id="highlights" class="section section-tint">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="eyebrow dark">What's happening</p>
+      <h2 class="section-title">Birthday Highlights</h2>
+    </div>
+    <div class="row g-4 mt-2" id="highlightGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 6. Dress code ============ -->
+<section id="dresscode" class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="eyebrow dark">Come dressed to shine</p>
+      <h2 class="section-title">Dress Code</h2>
+      <p class="section-sub mx-auto">Pick whichever palette makes you feel most like celebrating.</p>
+    </div>
+    <div class="row g-4 mt-2" id="dressGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 7. RSVP ============ -->
+<section id="rsvp" class="section section-tint">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="eyebrow dark">Say you'll be there</p>
+      <h2 class="section-title">RSVP</h2>
+      <p class="section-sub mx-auto">Kindly reply before 1 September 2026.</p>
+    </div>
+
+    <div class="row justify-content-center mt-2">
+      <div class="col-lg-8">
+        <div class="glass-card rsvp-card reveal">
+          <form id="rsvpForm" class="row g-3" novalidate>
+            <div class="col-md-6">
+              <label class="form-label" for="fullName">Full Name</label>
+              <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Your name" required minlength="2" />
+              <div class="invalid-feedback">Please tell us your name.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="phone">Phone Number</label>
+              <input type="tel" class="form-control" id="phone" name="phone" placeholder="+351 900 000 000" required pattern="[0-9+()\s-]{7,20}" />
+              <div class="invalid-feedback">Enter a valid phone number.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="guests">Number of Guests</label>
+              <input type="number" class="form-control" id="guests" name="guests" min="1" max="10" value="1" required />
+              <div class="invalid-feedback">Between 1 and 10 guests.</div>
+            </div>
+            <div class="col-md-6">
+              <span class="form-label d-block">Will You Attend?</span>
+              <div class="d-flex gap-2 attend-group">
+                <input class="btn-check" type="radio" name="attend" id="attendYes" value="yes" required />
+                <label class="attend-pill yes" for="attendYes">🎉 Yes, count me in</label>
+                <input class="btn-check" type="radio" name="attend" id="attendNo" value="no" />
+                <label class="attend-pill no" for="attendNo">💌 Sorry, can't</label>
+              </div>
+              <div class="attend-error">Please choose an option.</div>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="message">Message for the Birthday Person</label>
+              <textarea class="form-control" id="message" name="message" rows="4" placeholder="Write something lovely…"></textarea>
+            </div>
+            <div class="col-12 text-center mt-2">
+              <button type="submit" class="btn btn-party btn-lg ripple submit-btn" id="rsvpSubmit">
+                <span class="btn-text">Send My RSVP</span>
+              </button>
+            </div>
+          </form>
+
+          <div class="rsvp-success" id="rsvpSuccess" hidden>
+            <div class="tick" aria-hidden="true">
+              <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" /><path d="M14 27l8 8 16-16" /></svg>
+            </div>
+            <h3>Thank you!</h3>
+            <p id="successMsg">Your RSVP has been received. We can't wait to celebrate with you 🎈</p>
+            <button class="btn btn-outline-party ripple" type="button" id="rsvpReset">Send another reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. Gift wishes ============ -->
+<section class="section gift-section">
+  <div class="container">
+    <div class="gift-card reveal text-center mx-auto">
+      <img src="/images/g4.jpg" alt="Stack of wrapped gift boxes with gold ribbons" width="900" height="900" loading="lazy" class="gift-img" />
+      <h2 class="section-title mt-4">Your Presence Is the Gift</h2>
+      <p class="section-sub mx-auto mb-0">
+        Your presence is the greatest gift. If you'd like to bring something,
+        your love and blessings are more than enough.
+      </p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ 9. Footer ============ -->
+<footer class="site-footer">
+  <div class="container text-center reveal">
+    <p class="brand footer-brand mb-3">INVITO<span>.</span></p>
+    <div class="socials mb-3">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://invito.example.com" target="_blank" rel="noopener noreferrer" aria-label="Website"><i class="bi bi-globe2"></i></a>
+      <a href="mailto:hello@invito.example.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+    </div>
+    <p class="made mb-1">Made with <span class="heart">❤</span> by INVITO</p>
+    <p class="copy mb-0">© <span id="year"></span> INVITO. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ============ Lightbox ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview" hidden>
+  <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+  <img id="lbImg" src="" alt="" />
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">&#8250;</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="script.js" defer></script>
+</body>
+</html>
